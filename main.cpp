@@ -1,26 +1,29 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 struct data_pasien
 { 
   int id_pasien;
   string nama_pasien;
   string keluhan;
 };
+
 struct node{
     data_pasien data;
     node*next;
 };
+
 void enqueue(node*& head, data_pasien data)
 {
   node*baru = new node;
   baru ->data = data;
   baru ->next = NULL;
+
   if (head==NULL)
   {
     head = baru;
-  }
-  else
+  } else
   {
     node*temp = head;
     while (temp->next != NULL)
@@ -32,6 +35,7 @@ void enqueue(node*& head, data_pasien data)
   }
   
 }
+
 void display(node*head)
 {
   if (head== NULL)
@@ -51,11 +55,13 @@ void display(node*head)
   }
   
 }
+
 int main(){
   data_pasien home;
   node* head = NULL;
-   while (true)
-   {
+
+  while (true) 
+  {
     int pilihan;
     cout<<"----------sistem antrian rumah sakit----------"<<endl;
     cout<<"1.Tambah pasien"<<endl;
@@ -66,50 +72,47 @@ int main(){
     cout<< "masukkan nomor (1-5): "<<endl;
     cin >>pilihan;
     cin.ignore();
+    
     switch (pilihan)
     {
-    case 1:
-    cout << "[Menu Tambah Pasien]\n";
-    cout<<"masukkan nama:"<<endl;
-    getline(cin, home.nama_pasien);
-    cout<<"masukkan id:"<<endl;
-    cin>>home.id_pasien;
-    cin.ignore();
-    cout<<"masukkan keluhan:";
-    getline(cin, home.keluhan);
-    cout << "\n ✅ Data berhasil dimasukkan!\n";
-    cout << "Nama    : " << home.nama_pasien << endl;
-    cout << "ID      : " << home.id_pasien << endl;
-    cout << "Keluhan : " << home.keluhan << endl;
-    enqueue(head,home);
-    break;
-    
+      case 1:
+        cout << "[Menu Tambah Pasien]\n";
+        cout<<"masukkan nama:"<<endl;
+        getline(cin, home.nama_pasien);
+        cout<<"masukkan id:"<<endl;
+        cin>>home.id_pasien;
+        cin.ignore();
+        cout<<"masukkan keluhan:";
+        getline(cin, home.keluhan);
+        cout << "\n ✅ Data berhasil dimasukkan!\n";
+        cout << "Nama    : " << home.nama_pasien << endl;
+        cout << "ID      : " << home.id_pasien << endl;
+        cout << "Keluhan : " << home.keluhan << endl;
+        enqueue(head,home);
+        break;
+      
 
-    case 2:
-    cout << "[Menu Lihat Antrian]\n";
-    display(head); 
-    break;
+      case 2:
+        cout << "[Menu Lihat Antrian]\n";
+        display(head); 
+        break;
 
-    case 3:
-    cout << "[Menu Cari Pasien]\n";
-    break;
+      case 3:
+        cout << "[Menu Cari Pasien]\n";
+        break;
 
-    case 4:
-    cout << "[Menu Riwayat Pelayanan]\n";
-    break;
+      case 4:
+        cout << "[Menu Riwayat Pelayanan]\n";
+        break;
 
-    case 0:
-    cout << "Keluar program...\n";
-    return 0;
+      case 0:
+        cout << "Keluar program...\n";
+        return 0;
 
-    default:
-    cout << "[!] Pilihan tidak valid!\n";
+      default:
+        cout << "[!] Pilihan tidak valid!\n";
 
     }
     
-    
-   }
-
-   
-
+  }
 }
